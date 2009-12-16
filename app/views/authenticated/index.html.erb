@@ -1,0 +1,29 @@
+<h1>Authenticated</h1>
+<h4> User</h4>
+
+<p>Identity URL: <%= current_user.identity_url %></p>
+<p>E-mail: <%= current_user.email %> </p>
+<p>First name: <%= current_user.first_name %> </p>
+<p>Last name: <%= current_user.last_name %></p>
+<p>Language: <%= current_user.language %></p>
+
+<h4>Email</h4>
+<p>Soon to come</p>
+
+<h4>Calendars </h4>
+<p>Soon to come</p>
+
+<h4>Documents </h4>
+<p>Soon to come</p>
+
+<h4>Contacts </h4>
+<p>Soon to come</p>
+
+<br/>
+
+<p>
+<%= link_to "Logout", session_path, :method => :delete %>
+</p>
+
+
+

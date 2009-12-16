@@ -1,0 +1,35 @@
+require 'oauth'
+require 'oauth/consumer'
+require 'oauth/signature/rsa/sha1'
+
+module OauthConstants
+  OAUTH_CONSUMER_TOKEN  = "example.com"
+  OAUTH_CONSUMER_SECRET = "something-secret"
+
+  MAIL_SCOPE            = "https://mail.google.com/mail/feed/atom/"
+  CALENDAR_SCOPE        = "http://www.google.com/calendar/feeds/"
+
+  MAIL_FEED             = MAIL_SCOPE
+  
+  CALENDAR_SETTINGS     = {
+    'futureevents' => true,
+    'orderby' => "starttime",
+    'sortorder' => "a",
+    'max-results' => 5,
+    'singleevents' => true
+  }
+
+  CALENDARS_FEED        = "#{CALENDAR_SCOPE}default/allcalendars/full"
+
+  GOOGLE_SETTINGS = {
+    :site               => "https://www.google.com", 
+    :request_token_path => "/accounts/OAuthGetRequestToken",
+    :authorize_path     => "/accounts/OAuthAuthorizeToken",
+    :access_token_path  => "/accounts/OAuthGetAccessToken"
+  }
+
+  OAUTH_OPTS = {
+    :consumer => OAUTH_CONSUMER_TOKEN,
+    :scope => [MAIL_SCOPE, CALENDAR_SCOPE].join(" ")
+  }
+end
