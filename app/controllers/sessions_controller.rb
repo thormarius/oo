@@ -32,7 +32,9 @@ class SessionsController < ApplicationController
   def set_user(registration, identity_url)
     Rails.logger.info "************** SECRET **************************"
     Rails.logger.info OAUTH_CONSUMER_SECRET
-    Rails.logger.info "****************************************"
+    Rails.logger.info "**************REQUEST TOKEN *******************"
+    Rails.logger.info "************** #{registration[:request_token]} *******************"
+    Rails.logger.info "*******************************************************"
     user = User.find_or_initialize_by_identity_url(identity_url)
     user.first_name = registration[OPENID_FIRST].first
     user.last_name = registration[OPENID_LAST].first

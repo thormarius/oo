@@ -11,7 +11,7 @@ module OauthConstants
   MAIL_SCOPE            = "https://mail.google.com/mail/feed/atom/"
   CALENDAR_SCOPE        = "http://www.google.com/calendar/feeds/"
 
-  MAIL_FEED             = MAIL_SCOPE
+ 
   
   CALENDAR_SETTINGS     = {
     'futureevents' => true,
@@ -21,7 +21,7 @@ module OauthConstants
     'singleevents' => true
   }
 
-  CALENDARS_FEED        = "#{CALENDAR_SCOPE}default/allcalendars/full"
+
 
   GOOGLE_SETTINGS = {
     :site               => "https://www.google.com", 
@@ -34,4 +34,8 @@ module OauthConstants
     :consumer => OAUTH_CONSUMER_TOKEN,
     :scope => [MAIL_SCOPE, CALENDAR_SCOPE].join(" ")
   }
+
+  MAIL_FEED             = MAIL_SCOPE
+  CALENDARS_FEED        = "#{CALENDAR_SCOPE}default/allcalendars/full"
+  
 end
