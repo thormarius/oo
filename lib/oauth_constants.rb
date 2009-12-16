@@ -9,7 +9,7 @@ module OauthConstants
 
 
   MAIL_SCOPE            = "https://mail.google.com/mail/feed/atom/"
-  CALENDAR_SCOPE        = "http://www.google.com/calendar/feeds/"
+  #CALENDAR_SCOPE        = "http://www.google.com/calendar/feeds/"
 
   MAIL_FEED             = MAIL_SCOPE
   
@@ -32,6 +32,7 @@ module OauthConstants
 
   OAUTH_OPTS = {
     :consumer => OAUTH_CONSUMER_TOKEN,
-    :scope => [MAIL_SCOPE, CALENDAR_SCOPE].join(" ")
+    #:scope => [MAIL_SCOPE, CALENDAR_SCOPE].join(" ")
+    :scope => MAIL_SCOPE
   }
 end
