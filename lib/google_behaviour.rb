@@ -67,7 +67,7 @@ module GoogleBehaviour
   def access_token
     return @access_token if @access_token
     consumer      = OAuth::Consumer.new(OAUTH_CONSUMER_TOKEN, OAUTH_CONSUMER_SECRET, GOOGLE_SETTINGS)
-    @access_token = OAuth::AccessToken.new(consumer, oauth_access_token, oauth_access_secret)
+    @access_token = OAuth::AccessToken.new(consumer, oauth_token, oauth_secret)
   end
 
   def google_time(time)
