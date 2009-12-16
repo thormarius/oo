@@ -3,8 +3,9 @@ require 'oauth/consumer'
 require 'oauth/signature/rsa/sha1'
 
 module OauthConstants
-  OAUTH_CONSUMER_TOKEN  = "example.com"
-  OAUTH_CONSUMER_SECRET = "something-secret"
+  OAUTH_CONSUMER_TOKEN  = "oo-demo.heroku.com"
+  OAUTH_CONSUMER_SECRET = ENV["OAUTH_CONSUMER_SECRET"]
+
 
   MAIL_SCOPE            = "https://mail.google.com/mail/feed/atom/"
   CALENDAR_SCOPE        = "http://www.google.com/calendar/feeds/"

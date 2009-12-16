@@ -1,5 +1,5 @@
 module OpenidConstants
-  #include OauthConstants
+  include OauthConstants
 
 
   IDENTITY_URL = "https://www.google.com/accounts/o8/id"
@@ -13,7 +13,7 @@ module OpenidConstants
 
   OPENID_OPTS = {
     :required => [ OPENID_EMAIL, OPENID_FIRST, OPENID_LAST, OPENID_COUNTRY, OPENID_LANGUAGE ],
-    #:oauth => OAUTH_OPTS
+    :oauth => OAUTH_OPTS
   }
 
   end

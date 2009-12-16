@@ -5,3 +5,4 @@ db/schema.rb
 *.log
 *.sqlite3
 tmp/
+oauth_consumer.secret
