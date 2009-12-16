@@ -1,0 +1,6 @@
+nbproject/
+db/schema.rb
+.idea
+.DS_Store
+*.log
+
