@@ -30,11 +30,6 @@ class SessionsController < ApplicationController
 
   private
   def set_user(registration, identity_url)
-    Rails.logger.info "************** SECRET **************************"
-    Rails.logger.info OAUTH_CONSUMER_SECRET
-    Rails.logger.info "**************REQUEST TOKEN *******************"
-    Rails.logger.info "************** #{registration[:request_token]} *******************"
-    Rails.logger.info "*******************************************************"
     user = User.find_or_initialize_by_identity_url(identity_url)
     user.first_name = registration[OPENID_FIRST].first
     user.last_name = registration[OPENID_LAST].first
@@ -44,8 +39,8 @@ class SessionsController < ApplicationController
       consumer = OAuth::Consumer.new(OAUTH_CONSUMER_TOKEN, OAUTH_CONSUMER_SECRET, GOOGLE_SETTINGS)
       request_token = OAuth::RequestToken.new(consumer, registration[:request_token], "")
       oauth_access_token = request_token.get_access_token
-      user.oauth_access_token = oauth_access_token.token
-      user.oauth_access_secret = oauth_access_token.secret
+      user.oauth_token = oauth_access_token.token
+      user.oauth_secret = oauth_access_token.secret
     end
 
     user.save!
