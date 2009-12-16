@@ -4,4 +4,4 @@ db/schema.rb
 .DS_Store
 *.log
 *.sqlite3
-
+tmp/
