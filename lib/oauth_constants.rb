@@ -3,6 +3,7 @@ require 'oauth/consumer'
 require 'oauth/signature/rsa/sha1'
 
 module OauthConstants
+
   OAUTH_CONSUMER_TOKEN  = "oo-demo.heroku.com"
   OAUTH_CONSUMER_SECRET = ENV["OAUTH_CONSUMER_SECRET"]
 
