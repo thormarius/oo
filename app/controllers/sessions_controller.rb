@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  include OauthConstants
   include OpenidConstants
 
   def new; end
@@ -42,7 +41,7 @@ class SessionsController < ApplicationController
     if Rails.env == "production"
       consumer = OAuth::Consumer.new(OAUTH_CONSUMER_TOKEN, OAUTH_CONSUMER_SECRET, GOOGLE_SETTINGS)
       request_token = OAuth::RequestToken.new(consumer, registration[:request_token], "")
-      oauth_access_token = request_token.get_access_token({:oauth_verifier => params[:oauth_verifier]})
+      oauth_access_token = request_token.get_access_token
       user.oauth_access_token = oauth_access_token.token
       user.oauth_access_secret = oauth_access_token.secret
     end
