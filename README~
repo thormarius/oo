@@ -1,5 +1,9 @@
+Caveats
+
 1. Sette opp domene
 2. Hente OAuth secret
-3. Bruke git://github.com/aslakhellesoy/ruby-openid.git 
-4. Oppdatere environment.rb
+3. Sette OAUTH secret som miljøvariabel
+4. Bruke git://github.com/aslakhellesoy/ruby-openid.git som plugin
+5. Buke git://github.com/pelle/open_id_authentication.git som plugin
+6. Oppdatere environment.rb med plugins/gems
 
