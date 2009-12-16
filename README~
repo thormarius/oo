@@ -1,0 +1,5 @@
+1. Sette opp domene
+2. Hente OAuth secret
+3. Bruke git://github.com/aslakhellesoy/ruby-openid.git 
+4. Oppdatere environment.rb
+
