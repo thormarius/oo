@@ -43,8 +43,8 @@ module GoogleBehaviour
       {
         :title    => (entry/"title").text,
         :where    => (entry/"gd:where").first.attributes['valuestring'],
-        :start    => google_time((entry/"gd:when").first.attributes['starttime']),
-        :end      => google_time((entry/"gd:when").first.attributes['endtime']),
+        :start    => (entry/"gd:when").first.attributes['starttime'],
+        :end      => (entry/"gd:when").first.attributes['endtime'],
         :href     => (entry/"link[@rel='alternate'][@type='text/html']").first.attributes['href'],
         :calendar => title
       }
@@ -70,22 +70,4 @@ module GoogleBehaviour
     @access_token = OAuth::AccessToken.new(consumer, oauth_token, oauth_secret)
   end
 
-  def google_time(time)
-    begin
-      return Time.parse(time)
-    rescue
-      # Could be because google delivers hour as 24+.
-      # Attempting to modify hour
-      time =~/.*T(.*):.*:.*/
-      begin
-        hour = $1.to_i if $1
-        if hour && hour > 23
-          return Time.parse(time.gsub(/T\d+:/,  "T#{hour % 24}:"))
-        end
-      rescue
-        Rails.logger.info("Could not parse date: #{time}")
-      end
-    end
-  end
-  nil
 end
