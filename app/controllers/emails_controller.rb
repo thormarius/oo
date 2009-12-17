@@ -1,11 +1,7 @@
 class EmailsController < ApplicationController
   before_filter :login_required
 
-  def index
-    headers["Content-Type"] = "text/plain"
-    headers["Foo"] = "Bar"
-    render :text => current_user.emails
-  end
+  def index; end
 
 #  def show
 #    # Enkelt mail
