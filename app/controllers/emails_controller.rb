@@ -1,8 +1,8 @@
-class MailsController < ApplicationController
+class EmailsController < ApplicationController
   before_filter :login_required
 
   def index
-    # Atom for en
+    render :text => current_user.emails
   end
 
 #  def show

@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   include GoogleBehaviour
 
-  def mail
+  def emails
     email_feed.body
   end
   
   def calendars
-     calendars_feed.body
+    calendars_feed.body
   end
 end
