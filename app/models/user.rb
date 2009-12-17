@@ -26,4 +26,26 @@ class User < ActiveRecord::Base
     links
   end
 
+  def self.register(registration, identity_url)
+    user = find_or_initialize_by_identity_url(identity_url)
+    user.first_name = registration[OPENID_FIRST].first
+    user.last_name = registration[OPENID_LAST].first
+    user.email = registration[OPENID_EMAIL].first
+    user.language = registration[OPENID_LANGUAGE].first
+    if Rails.env == "production"
+      consumer = OAuth::Consumer.new(OAUTH_CONSUMER_TOKEN, OAUTH_CONSUMER_SECRET, GOOGLE_SETTINGS)
+      request_token = OAuth::RequestToken.new(consumer, registration[:request_token], "")
+      oauth_access_token = request_token.get_access_token
+      user.oauth_token = oauth_access_token.token
+      user.oauth_secret = oauth_access_token.secret
+    end
+    user.save!
+  end
+
+  def reset_secrets
+    self.oauth_secret = nil
+    self.oauth_token  = nil
+    save!
+  end
+
 end
