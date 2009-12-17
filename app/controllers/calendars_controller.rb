@@ -1,10 +1,13 @@
+require 'rexml/document'
+
 class CalendarsController < ApplicationController
   before_filter :login_required
 
   def index
     begin
       REXML::Document.new(current_user.calendars).write(@calendars_atom="", 2)
-    rescue
+    rescue => e
+      @error = e.message
       @calendars_atom = current_user.calendars
     end
   end
