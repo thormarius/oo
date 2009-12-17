@@ -1,2 +1,3 @@
 oauth --version '= 0.3.6'
 nokogiri --version '= 1.4.1'
+hpricot --version '= 0.8.2'
