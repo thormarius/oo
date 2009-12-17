@@ -1,5 +1,7 @@
-<h1>Calendars Atom feed</h1>
-<% @calendars.each do |calendar| %>
-  <%= link_to calendar[:name], calendar_path(calendar[:id]) %>
+<h1> My Calendars </h1>
+<% @calendar_links.each do |calendar| %>
+  <%= link_to calendar[:name], calendar_path(calendar[:url]) %>
 <% end %>
+
+<h1>Calendars Atom feed</h1>
 <pre><%= h(@calendars_atom) %></pre>

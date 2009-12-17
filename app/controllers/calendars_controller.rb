@@ -2,7 +2,7 @@ class CalendarsController < ApplicationController
   before_filter :login_required
 
   def index
-    @calendars = current_user.calendar_links
+    @calendar_links = current_user.calendar_links
     begin
       @calendars_atom = Nokogiri::XML(current_user.calendars).to_s
     rescue => e

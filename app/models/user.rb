@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
     calendars_feed.body
   end
 
-  def events(calendar)
-    event_feed(calendar).body
+  def events(url)
+    event_feed(url).body
   end
 
   def calendar_links
