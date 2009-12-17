@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     links
   end
 
-  def self.register(registration, identity_url)
+  def self.openid_registration(registration, identity_url)
     user = find_or_initialize_by_identity_url(identity_url)
     user.first_name = registration[OPENID_FIRST].first
     user.last_name = registration[OPENID_LAST].first
@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
       user.oauth_secret = oauth_access_token.secret
     end
     user.save!
+    user
   end
 
   def reset_secrets
@@ -48,6 +49,7 @@ class User < ActiveRecord::Base
   end
 
   private
+
   def calendars_feed
     @calendars ||= calendars_feed_with_redirect
   end

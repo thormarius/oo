@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   def open_id_authentication
     authenticate_with_open_id(IDENTITY_URL, OPENID_OPTS) do |openid_result, identity_url, registration|
       if openid_result.successful?
-        self.current_user = User.register(registration,  identity_url)
+        self.current_user = User.openid_registration(registration,  identity_url)
         redirect_to authenticated_content_url
       else
         render :text => "OpenID authentication failed"
