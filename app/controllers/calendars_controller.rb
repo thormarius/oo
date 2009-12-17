@@ -5,7 +5,7 @@ class CalendarsController < ApplicationController
     begin
       @calendars_atom = Nokogiri::XML(current_user.calendars).to_s
     rescue => e
-      @error = e.message
+      Rails.logger.info("Got exception: #{e.inspect}")
       @calendars_atom = current_user.calendars
     end
   end

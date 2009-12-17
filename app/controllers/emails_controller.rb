@@ -4,7 +4,8 @@ class EmailsController < ApplicationController
   def index
     begin
       @emails_atom = Nokogiri::XML(current_user.emails).to_s
-    rescue
+    rescue => e
+      Rails.logger.info("Got exception: #{e.inspect}")
       @emails_atom = current_user.emails
     end
   end
