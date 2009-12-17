@@ -4,11 +4,7 @@ module GoogleBehaviour
   private
 
   def calendars_feed
-    calendars = access_token.get(CALENDARS_FEED)
-    if Net::HTTPFound === calendars
-      calendars = access_token.get(calendars['location'])
-    end
-    calendars
+    @calendars ||= calendars_feed_with_redirect
   end
 
 
@@ -29,6 +25,14 @@ module GoogleBehaviour
     return @access_token if @access_token
     consumer      = OAuth::Consumer.new(OAUTH_CONSUMER_TOKEN, OAUTH_CONSUMER_SECRET, GOOGLE_SETTINGS)
     @access_token = OAuth::AccessToken.new(consumer, oauth_token, oauth_secret)
+  end
+
+  def calendars_feed_with_redirect
+    calendars = access_token.get(CALENDARS_FEED)
+    if Net::HTTPFound === calendars
+      calendars = access_token.get(calendars['location'])
+    end
+    calendars
   end
 
 end
