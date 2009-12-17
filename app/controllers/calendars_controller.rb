@@ -3,9 +3,9 @@ class CalendarsController < ApplicationController
 
   def index
     begin
-      REXML::Document.new(current_user.emails).write(@calendars_atom="", 2)
+      REXML::Document.new(current_user.calendars).write(@calendars_atom="", 2)
     rescue
-      @calendars_atom = current_user.emails
+      @calendars_atom = current_user.calendars
     end
   end
 
