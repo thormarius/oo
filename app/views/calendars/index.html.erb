@@ -1,4 +1,6 @@
 <h1> My Calendars </h1>
+These are links to the different event feeds for the calendars retrieved in the Calendar Atom feed
+
 <ul>
 <% @calendar_links.each do |calendar_link| %>
   <li><%= link_to calendar_link[:name], calendar_path(CGI::escape(calendar_link[:url])) %></li>
@@ -6,4 +8,5 @@
 </ul>
 
 <h1>Calendars Atom feed</h1>
+This is the main feed for calendars. Each entry represents one of your Google Calendars
 <pre><%= h(@calendars_atom) %></pre>
