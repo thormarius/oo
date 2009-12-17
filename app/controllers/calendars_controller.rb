@@ -12,7 +12,7 @@ class CalendarsController < ApplicationController
 
   # /calendars/<id>
   def show
-    # Atom for en kalender - flere events
+    @events_atom = Nokogiri::XML(current_user.events(params[:id])).to_s
   end
 end
 

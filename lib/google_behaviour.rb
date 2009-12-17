@@ -2,29 +2,6 @@ module GoogleBehaviour
   include OauthConstants
   
   private
-  def fetch_events
-    feed = calendars_feed
-    return nil unless Net::HTTPOK === feed
-    threads = (Hpricot(feed.body) / "entry").map do |entry|
-      hidden   = (entry / "gcal:hidden").first.attributes["value"]  == "true"
-      selected = (entry / "gcal:selected").first.attributes["value"] == "true"
-      if !hidden && selected
-        url = (entry / "content[@type=application/atom+xml]").first.attributes['src']
-        Thread.new do
-          Thread.current[:events] = calendar_events("#{url}?#{CALENDAR_SETTINGS.to_param}")
-        end
-      end
-    end.compact
-
-    events = threads.map do |t|
-      t.join
-      t[:events]
-    end
-
-    events.flatten.sort do |a, b|
-      a[:start] <=> b[:start]
-    end[0,5]
-  end
 
   def calendars_feed
     calendars = access_token.get(CALENDARS_FEED)
@@ -34,22 +11,6 @@ module GoogleBehaviour
     calendars
   end
 
-  def calendar_events(url)
-    feed = event_feed(url)
-    return nil unless Net::HTTPOK === feed
-    doc = Hpricot(feed.body)
-    title = doc.at("/feed/title").inner_text
-    (doc / "entry").map do |entry|
-      {
-        :title    => (entry/"title").text,
-        :where    => (entry/"gd:where").first.attributes['valuestring'],
-        :start    => (entry/"gd:when").first.attributes['starttime'],
-        :end      => (entry/"gd:when").first.attributes['endtime'],
-        :href     => (entry/"link[@rel='alternate'][@type='text/html']").first.attributes['href'],
-        :calendar => title
-      }
-    end
-  end
 
   def event_feed(url)
     event_feed = access_token.get(url)
