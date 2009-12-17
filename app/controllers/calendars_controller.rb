@@ -5,9 +5,8 @@ class CalendarsController < ApplicationController
 
   def index
     begin
-      REXML::Document.new(current_user.calendars).write(@calendars_atom="", 2)
+      @calendars_atom = Nokogiri::XML(current_user.calendars)
     rescue => e
-      Rails.logger.info("***********#{e.inspect}")
       @error = e.message
       @calendars_atom = current_user.calendars
     end
