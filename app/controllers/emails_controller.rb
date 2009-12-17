@@ -3,6 +3,7 @@ class EmailsController < ApplicationController
 
   def index
     headers["Content-Type"] = "text/plain"
+    headers["Foo"] = "Bar"
     render :text => current_user.emails
   end
 
