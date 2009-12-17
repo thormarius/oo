@@ -1,3 +1,2 @@
-ruby-openid --version '= 2.1.7'
 oauth --version '= 0.3.6'
-ruby-openid --version '>= 2.0.4'
+nokogiri --version '= 1.4.1'
