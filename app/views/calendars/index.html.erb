@@ -1,7 +1,7 @@
 <h1> My Calendars </h1>
 <ul>
 <% @calendar_links.each do |calendar_link| %>
-  <li><%= link_to calendar_link[:name], calendar_path(calendar_link[:url]) %></li>
+  <li><%= link_to calendar_link[:name], calendar_path(CGI::escape(calendar_link[:url])) %></li>
 <% end %>
 </ul>
 
