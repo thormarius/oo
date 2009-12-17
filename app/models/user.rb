@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
         :name => (entry / "title").text
       }
     end
-    Rails.logger.info("Calendar links: #{links}")
     links
   end
 
