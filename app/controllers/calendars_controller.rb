@@ -13,7 +13,7 @@ class CalendarsController < ApplicationController
 
   # /calendars/<id>
   def show
-    @events_atom = Nokogiri::XML(current_user.events(params[:id])).to_s
+    @events_atom = Nokogiri::XML(current_user.events(params[:url])).to_s
   end
 end
 
