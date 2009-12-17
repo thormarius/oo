@@ -1,32 +1,27 @@
-<h1>Authenticated</h1>
-<h4> User</h4>
+<h1><%= current_user.first_name %> <%= current_user.last_name %></h1>
 
-<p>Identity URL: <%= current_user.identity_url %></p>
-<p>E-mail: <%= current_user.email %> </p>
-<p>First name: <%= current_user.first_name %> </p>
-<p>Last name: <%= current_user.last_name %></p>
-<p>Language: <%= current_user.language %></p>
+<dl>
+  <dt>Identity URL</dt>
+  <dd><%= current_user.identity_url %></dd>
 
-<h4>Email</h4>
-<pre>
-  <%= h(current_user.mail) %>
-</pre>
+  <dt>Email</dt>
+  <dd><%= current_user.email %></dd>
 
-<h4>Calendars </h4>
-<pre>
-  <%= h(current_user.calendars) %>
-</pre>
+  <dt>Language</dt>
+  <dd><%= current_user.language %></dd>
+</dl>
 
-<h4>Documents </h4>
-<p>Soon to come</p>
+<h2>Feeds</h2>
 
-<h4>Contacts </h4>
-<p>Soon to come</p>
+<ul>
+  <li><%= link_to("Emails", emails_path) %></li>
+  <li><%= link_to("All Calendars", calendars_path) %></li>
+</ul>
 
-<br/>
+<hr/>
 
 <p>
-<%= link_to "Logout", session_path, :method => :delete %>
+  <%= link_to "Logout", session_path, :method => :delete %>
 </p>
 
 
