@@ -5,7 +5,7 @@ class CalendarsController < ApplicationController
 
   def index
     begin
-      @calendars_atom = Nokogiri::XML(current_user.calendars)
+      @calendars_atom = Nokogiri::XML(current_user.calendars).to_s
     rescue => e
       @error = e.message
       @calendars_atom = current_user.calendars
