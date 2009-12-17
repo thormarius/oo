@@ -1,6 +1,6 @@
 <h1> My Calendars </h1>
-<% @calendar_links.each do |calendar| %>
-  <%= link_to calendar[:name], calendar_path(1) %>
+<% @calendar_links.each do |calendar_link| %>
+  <%= link_to calendar_link[:name], calendar_path(1) %>
 <% end %>
 
 <h1>Calendars Atom feed</h1>

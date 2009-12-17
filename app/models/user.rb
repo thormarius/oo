@@ -16,12 +16,14 @@ class User < ActiveRecord::Base
   def calendar_links
     feed = calendars_feed
     return [] unless Net::HTTPOK === feed
-    (Hpricot(feed.body) / "entry").map do |entry|
+    links = (Hpricot(feed.body) / "entry").map do |entry|
       {
         :url => (entry / "content[@type=application/atom+xml]").first.attributes['src'],
         :name => (entry / "title").first
       }
     end
+    Rails.logger.info("Calendar links: #{links}")
+    links
   end
 
 end
