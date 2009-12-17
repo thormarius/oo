@@ -4,7 +4,7 @@ class EmailsController < ApplicationController
   before_filter :login_required
 
   def index
-    @emails_atom = REXML::Document.new(current_user.emails).to_s(2)
+    REXML::Document.new(current_user.emails).write(@emails_atom="", 2)
   end
 
 #  def show
