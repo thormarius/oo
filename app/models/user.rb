@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     links = (Hpricot(feed.body) / "entry").map do |entry|
       {
         :url => (entry / "content[@type=application/atom+xml]").first.attributes['src'],
-        :name => (entry / "title").first
+        :name => (entry / "title").text
       }
     end
     Rails.logger.info("Calendar links: #{links}")
