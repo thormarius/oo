@@ -1,11 +1,9 @@
-require 'rexml/document'
-
 class EmailsController < ApplicationController
   before_filter :login_required
 
   def index
     begin
-      REXML::Document.new(current_user.emails).write(@emails_atom="", 2)
+      @emails_atom = Nokogiri::XML(current_user.emails).to_s
     rescue
       @emails_atom = current_user.emails
     end

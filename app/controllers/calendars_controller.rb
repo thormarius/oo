@@ -1,5 +1,3 @@
-require 'rexml/document'
-
 class CalendarsController < ApplicationController
   before_filter :login_required
 
