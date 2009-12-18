@@ -13,8 +13,7 @@
     <%if current_user%>
       <p style="color: red">
         For your own security: <br/>
-        Remember to <%=link_to "logout"%> from the application when finished.
-        This will reset your OAuth tokens i our database
+        Remember to <%= link_to "Logout", session_path, :method => :delete %> from the application when finished. This will reset your OAuth tokens i our database.
       </p>
     <%  end %>
     <%= yield %>
