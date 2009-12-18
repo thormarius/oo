@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   end
 
   def self.openid_registration(registration, identity_url)
+    return nil unless identity_url
     user = find_or_initialize_by_identity_url(identity_url)
     user.first_name = registration[OPENID_FIRST].first
     user.last_name = registration[OPENID_LAST].first

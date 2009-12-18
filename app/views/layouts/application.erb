@@ -1,6 +1,23 @@
-<html>
-  <head><title>Google OpenID+OAuth</title></head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Google OpenID+OAuth</title>
+    <%= stylesheet_link_tag 'scaffold' %>
+  </head>
   <body>
+
+    <p style="color: green"><%= flash[:notice] %></p>
+    <%if current_user%>
+      <p style="color: red">
+        For your own security: <br/>
+        Remember to <%=link_to "logout"%> from the application when finished.
+        This will reset your OAuth tokens i our database
+      </p>
+    <%  end %>
     <%= yield %>
+
   </body>
 </html>
