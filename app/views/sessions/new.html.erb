@@ -1,4 +1,4 @@
-<%= link_to "Login", session_path, :method => :post %>
+<%= link_to "Login with your Google account", session_path, :method => :post %>
 
 <pre>
 DISCLAIMER:
@@ -6,7 +6,6 @@ DISCLAIMER:
 This application does not store your Google credentials, nor your GMail or Calendar information.
 We do however store an OAuth access token for the purpose of communicating with Google on behalf of you.
 This access token will be deleted from our database when you logout from the application.
-
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
@@ -16,7 +15,7 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
-
 </pre>
 
-<%= link_to "source", "http://github.com/thormarius/oo", :target => "_blank" %>
+<%= link_to "source", "http://github.com/thormarius/oo", :target => "_blank" %>&nbsp;|&nbsp;
+<%= link_to "blog post", "http://open.bekk.no/2009/12/18/gmail-and-google-calendar-with-openid-and-oauth/", :target => "_blank"%>

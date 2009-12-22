@@ -1,9 +1,8 @@
-Caveats
+Things to remember if you're downloading the source to run it yourself:
 
-1. Sette opp domene
-2. Hente OAuth secret
-3. Sette OAUTH secret som miljøvariabel
-4. Bruke git://github.com/aslakhellesoy/ruby-openid.git som plugin
-5. Bruke git://github.com/pelle/open_id_authentication.git som plugin
-6. Oppdatere environment.rb med plugins/gems
+1. Your domain must be registered with Google, https://www.google.com/accounts/ManageDomains
+2. After you have verified your domain, you'll get your OAuth secret.
+3. The OAuth secret must be set as the environment variable OAUTH_CONSUMER_SECRET=<my_secret> in your runtime environment.
+4. The OAuth goodness wil only run on the domain that is registered with google (not localhost)
 
+For further information, see http://open.bekk.no/2009/12/18/gmail-and-google-calendar-with-openid-and-oauth/
